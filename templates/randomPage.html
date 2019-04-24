@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Pick a random advice page</title>
+
+
+  <link rel='stylesheet' href='https://www.citizensadvice.org.uk/static/build/css/site.css?_ffc=5248468199667387904'>
+<link rel='stylesheet' href='https://unpkg.com/@citizensadvice/cads-system@latest/build/cads.system.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+
+  <header class="c-global-header">
+  <div class="c-wrap">
+    <div class="c-global-header__product-title">
+      <img src="https://citizensadvice.github.io/cads/images/citizens_advice_logo.svg" alt="Citizens Advice logo">
+    </div>
+  </div>
+</header>
+
+<div class="c-wrap">
+  <div class="o-grid">
+    <div class="o-grid__unit o-grid__unit--t-2-3">
+ <div class="title">
+        <h1 id="RootPlaceHolder_RootPlaceHolder_H1_top" class="title__heading js-ref">
+
+            <span class="title__title">Pick a random advice page</span>
+        </h1>
+    </div>
+
+    <div class="articleContent">
+<p>Public: <a href = {{publicUrl}} target = "_blank">{{publicPage}}</a></p>
+<p>Advisernet (requires login): <a href = {{adviserUrl}} target = "_blank">{{adviserPage}}</a></p>
+<button class="button" onclick = "window.location.href = '{{url_for("index")}}';">Pick again</button>
+</body>
+
+<footer class="c-global-footer u-spacingBottom--none" role="contentinfo" >
+  <div class="c-wrap">
+    <p class="u-spacingBottom--none">
+      Copyright &copy; 2018 Citizens Advice. All rights reserved.<br>
+      Citizens Advice is an operating name of the National Association of Citizens Advice Bureaux. Registered charity number 279057 <br>
+      VAT number 726 0202 76 Company limited by guarantee. Registered number 01436945 England<br>
+      Registered office: Citizens Advice, 3rd Floor North, 200 Aldersgate, London, EC1A 4HD
+    </p>
+  </div>
+</footer>
+
+
+
+
+
+
+</body>
+
+</html>
