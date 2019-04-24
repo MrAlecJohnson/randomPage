@@ -5,7 +5,8 @@ import os
 import flask
 
 # Get the data from BigQuery
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "C:/Users/Alec/Python/bigQueryCreds.json"
+# Set credentials for local use - not needed for live as it's stored on Heroku
+#os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "C:/Users/Alec/Python/bigQueryCreds.json"
 
 client = bigquery.Client()
 
