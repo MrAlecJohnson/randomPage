@@ -3,6 +3,7 @@
 from google.cloud import bigquery
 import os
 import flask
+import json
 
 # Get the data from BigQuery
 # Set credentials for local use - not needed for live as it's stored on Heroku
