@@ -1,1 +1,1 @@
-web: gunicorn random-advice:app
+web: gunicorn randomPage:app
