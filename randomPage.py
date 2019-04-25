@@ -9,7 +9,7 @@ import json
 # Set credentials for local use - not needed for live as it's stored on Heroku
 #os.environ["GOOGLE_JSON"] = "/Users/alec/Python/randomPage/bigQueryCreds.json"
 
-creds = json.loads(os.environ.get('GOOGLE_JSON'))
+creds = json.loads(os.environ('GOOGLE_JSON'))
 with open('gcreds.json', 'w') as fp:
     json.dump(creds, fp)
 GOOGLE_APPLICATION_CREDENTIALS = 'gcreds.json'
