@@ -6,13 +6,13 @@ import flask
 
 # Get the data from BigQuery
 # Set credentials for local use - not needed for live as it's stored on Heroku
-#os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "C:/Users/Alec/Python/bigQueryCreds.json"
-
+#os.environ["GOOGLE_JSON"] = "/Users/alec/Python/randomPage/bigQueryCreds.json"
+GOOGLE_APPLICATION_CREDENTIALS = json.loads(os.environ.get('GOOGLE_JSON'))
 client = bigquery.Client()
 
 publicQuery = client.query("""
     SELECT
-      Path, MainTitle 
+      Path, MainTitle
     FROM `pagesreport.pagesreport_view`
     WHERE
   REGEXP_CONTAINS(Language, "en-GB|en-WLS")
@@ -31,7 +31,7 @@ adviserQuery = client.query("""
   AND REGEXP_CONTAINS(Template, "Standard|Advice page|Beta content page|AdviserNet page|Legacy AdviserNet page|Leaflet|Sample letter|Form|Document|Universal Credit|Energy comparison|Court Nav")
   AND REGEXP_CONTAINS(Path, "^/(advisernet/benefits|advisernet/consumer|advisernet/debt-and-money|advisernet/family|advisernet/health|advisernet/housing|advisernet/immigration|advisernet/law-and-courts|advisernet/work)/")
   AND StopPublish IS NULL
-  AND NOT IsTranslation 
+  AND NOT IsTranslation
   """)
 
 publicResults = publicQuery.result()  # Waits for job to complete.
@@ -40,20 +40,20 @@ adviserResults = adviserQuery.result()
 public = publicResults.to_dataframe()
 adviser = adviserResults.to_dataframe()
 
-# %% 
+# %%
 
 # Function to pick the random pages
 def picker(public, adviser):
     publicPage = public.sample(1)
     adviserPage = adviser.sample(1)
-    return (publicPage.iloc[0]['MainTitle'], 
-            publicPage.iloc[0]['Path'], 
+    return (publicPage.iloc[0]['MainTitle'],
+            publicPage.iloc[0]['Path'],
             adviserPage.iloc[0]['MainTitle'],
             adviserPage.iloc[0]['Path'])
 
 prefix = "https://www.citizensadvice.org.uk"
 
-# %% 
+# %%
 
 # Set up the flask app
 app = flask.Flask(__name__)
